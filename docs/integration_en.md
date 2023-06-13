@@ -1,23 +1,23 @@
 CommonMedia AdScript Integration
 ======
 
-Anleitung zur Einbindung des CommonMedia AdScripts (cmAds)
+CommonMedia Ad-Script (cmAds) Integration Guide
 ----------------------------------------------------
 
-Das CommonMedia AdScript (cmAds) ist Rückgrat des CommonMedia Ad-Stacks. Es übernimmt sämtliche Aufgaben die für eine erfolgreiche Monetarisierung einer Website notwendig sind, unter anderem: Real-Time-Bidding, Id- und Key-Value-Management, Lazy Loading und die Kommunikation mit dem AdServer. Für die Einbindung sind nur wenige Schritte notwendig.
+The CommonMedia ad-script (cmAds) is the backbone of the CommonMedia ad-stack. It is responsible for all task that are necessary for a successful monetization of digital properties. Some of which are: Real-Time-Bidding, id- and key-value-management, lazy loading and ad-server-communication. The integration is straight forward and will only take a couple of steps.
 
 ## Script Tag
 
-Der cmAds-Tag den Sie von ihrem Account Manager erhalten haben, muss im <head> Element ihrer Website eingebunden werden. Er sollte auf jeder einzelnen Unterseite ihrer Website vorhanden sein, selbst wenn dort keine Werbung angezeigt wird.
+The script-tag, that you received from your account manager, needs to be added inside the `<head>` element of your website. It should be present on every single page, no matter if ads should be shown there or not.
 
-Beispiel
+Example
 
 ```html
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Beispiel Seite</title>
-  <script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=beispiel'></script>
+  <title>Example</title>
+  <script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=example'></script>
 </head>
 <body>
   ...
@@ -25,21 +25,35 @@ Beispiel
 </html>
 ```
 
+## Parameter
+
+You can change the behaviour of cmAds by passing additional query-parameters to the script-tag.
+
+### No Ads
+
+If you pass `noads=true` as query parameter, no ads will be rendered on the page. This is especially useful for sub-pages where no ads should be visible, but all other services of cmAds should still be running.
+
+```html
+  <script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=example?noads=true'></script>
+```
+
 ## Ad-Container
 
-CmAds ist dazu in der Lage Werbe-Container für Sie zu platzieren, allerdings raten wir dazu ab um Cumulative Layout Shift (CLS) zu vermeiden. Stattdessen sollten Sie im Source Code ihrer Website selbst definieren an welcher Stelle Werbung platziert werden soll. Wir bieten dazu zwei Unterschiedliche Möglichkeiten
+CmAds can automatically inject ad containers for you if you wish so, although this is discouraged because it introduces layout shifts (CLS). Instead you should place ad containers directly in your websites source code, wherever ads should be rendered. CmAds offers two different kinds of containers for this:
 
 ### Class-Container
 
-Class-Container werden erst dann geladen, wenn sie in die nähe des Viewports des Users kommen (Lazy Loading), was sich positiv auf die KPIs der Platzierung auswirken kann. Class-Container eignen sich vor allem für dynamische Platzierungen im Content (bpsw. nach jedem 4. Absatz). Um einen Class Container zu platzieren fügen Sie im Source Code ihrer Website einfach folgendes Element ein:
+Class-containers are only rendered, when they come near a users viewport (Lazy Loading). This can increase website performance and the ads KPIs. Class-Container are especially useful for dynamic placements inside the content area (e.g., after every fourth paragraph). To place a class-container on your page, add the following element to your website's source code:
 
 ```html
-<div class="cm-ad-content"><div>
+<div class="cm-ad-content" style="min-height:505px;"><div>
 ```
+
+`min-height:505px` is added to the containers styling in order to avoid CLS once ads render. You can set this inline or inside your stylesheet.
 
 ### Id-Container
 
-Id-Container sind fest platzierte Container die direkt beim Aufruf der Seite geladen werden. Sie eigenen sich vor allem für Out-Of-Page Ads. Um einen Id-Container zu platzierten fügen Sie im Source Code ihrer Website einfach eins der folgenden Elemente ein:
+Id-Container are statically placed containers, which are rendered immediately on page load. They are especially useful for out-of-page ads and ads that are outside of the content area. To place an id-container on your page, add the following element to your website's source code:
 
 #### Sticky Sitebar
 
@@ -56,17 +70,7 @@ Id-Container sind fest platzierte Container die direkt beim Aufruf der Seite gel
 #### Billboard
 
 ```html
-<div id="BB"><div>
+<div id="BB" style="min-height:275px;"><div>
 ```
 
-## Parameter
-
-Das Verhalten des cmAds-Tags lässt sich durch das anfügen von Parametern verändern. Standardmäßig werden folgende Parameter unterstützt:
-
-### noAds
-
-Durch den noAds-Parameter wird die Auslieferung von Werbung unterbunden. Das kann sehr hilfreich sein, wenn auf einer Unterseite keine WErbung ausgespielt werden, andere Funktionen des cmAds Scripts aber erhalten bleiben sollen.
-
-```html
-<script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=beispiel?noads=true'></script>
-```
+`min-height:275px` is added to the containers styling in order to avoid CLS once ads render. You can set this inline or inside your stylesheet.

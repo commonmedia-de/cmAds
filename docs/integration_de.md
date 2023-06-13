@@ -8,7 +8,7 @@ Das CommonMedia AdScript (cmAds) ist Rückgrat des CommonMedia Ad-Stacks. Es üb
 
 ## Script Tag
 
-Der cmAds-Tag den Sie von ihrem Account Manager erhalten haben, muss im <head> Element ihrer Website eingebunden werden. Er sollte auf jeder einzelnen Unterseite ihrer Website vorhanden sein, selbst wenn dort keine Werbung angezeigt wird.
+Der Script-Tag, den Sie von ihrem Account Manager erhalten haben, muss im `<head>` Element ihrer Website eingebunden werden. Er sollte auf jeder einzelnen Unterseite ihrer Website vorhanden sein, selbst wenn dort keine Werbung angezeigt wird.
 
 Beispiel
 
@@ -25,6 +25,10 @@ Beispiel
 </html>
 ```
 
+## Parameter
+
+Das Verhalten des cmAds-Tags lässt sich durch das anfügen von Parametern beliebig verändern.
+
 ## Ad-Container
 
 CmAds ist dazu in der Lage Werbe-Container für Sie zu platzieren, allerdings raten wir dazu ab um Cumulative Layout Shift (CLS) zu vermeiden. Stattdessen sollten Sie im Source Code ihrer Website selbst definieren an welcher Stelle Werbung platziert werden soll. Wir bieten dazu zwei Unterschiedliche Möglichkeiten
@@ -36,6 +40,8 @@ Class-Container werden erst dann geladen, wenn sie in die nähe des Viewports de
 ```html
 <div class="cm-ad-content"><div>
 ```
+
+Dem Class-Container sollte eine Mindesthöhe von 480px gegeben werden um CLS zu vermeiden
 
 ### Id-Container
 
@@ -59,6 +65,4 @@ Id-Container sind fest platzierte Container die direkt beim Aufruf der Seite gel
 <div id="BB"><div>
 ```
 
-## Parameter
-
-Das Verhalten des cmAds-Tags lässt sich durch das anfügen von Parametern beliebig verändern.
+Dem Billboard-Container sollte eine Mindesthöhe von 275px gegeben werden um CLS zu vermeiden
