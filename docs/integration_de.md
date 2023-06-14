@@ -38,10 +38,16 @@ CmAds ist dazu in der Lage Werbe-Container für Sie zu platzieren, allerdings ra
 Class-Container werden erst dann geladen, wenn sie in die nähe des Viewports des Users kommen (Lazy Loading), was sich positiv auf die KPIs der Platzierung auswirken kann. Class-Container eignen sich vor allem für dynamische Platzierungen im Content (bpsw. nach jedem 4. Absatz). Um einen Class Container zu platzieren fügen Sie im Source Code ihrer Website einfach folgendes Element ein:
 
 ```html
-<div class="cm-ad-content"><div>
+<div class="cm-ad-content" style="min-height:505px;"><div>
 ```
 
-Dem Class-Container sollte eine Mindesthöhe von 480px gegeben werden um CLS zu vermeiden
+**Desktop Layouts**
+
+```html
+<div class="cm-ad-content" style="min-height:275px;"><div>
+```
+
+Dem Class-Container sollte eine Mindesthöhe gegeben werden um CLS zu vermeiden
 
 ### Id-Container
 

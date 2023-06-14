@@ -45,11 +45,19 @@ CmAds can automatically inject ad containers for you if you wish so, although th
 
 Class-containers are only rendered, when they come near a users viewport (Lazy Loading). This can increase website performance and the ads KPIs. Class-Container are especially useful for dynamic placements inside the content area (e.g., after every fourth paragraph). To place a class-container on your page, add the following element to your website's source code:
 
+**Mobile Layouts**
+
 ```html
 <div class="cm-ad-content" style="min-height:505px;"><div>
 ```
 
-`min-height:505px` is added to the containers styling in order to avoid CLS once ads render. You can set this inline or inside your stylesheet.
+**Desktop Layouts**
+
+```html
+<div class="cm-ad-content" style="min-height:275px;"><div>
+```
+
+`min-height` is added to the containers styling in order to avoid CLS once ads render. You can set this inline or inside your stylesheet.
 
 ### Id-Container
 
