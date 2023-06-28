@@ -34,7 +34,7 @@ You can change the behaviour of cmAds by passing additional query-parameters to 
 If you pass `noads=true` as query parameter, no ads will be rendered on the page. This is especially useful for sub-pages where no ads should be visible, but all other services of cmAds should still be running.
 
 ```html
-  <script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=example?noads=true'></script>
+  <script async type='text/javascript' src='https://www.cmadserver.de/ads/?site=example&noads=true'></script>
 ```
 
 ## Ad-Container
